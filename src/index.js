@@ -47,6 +47,7 @@ async function newForecast(location) {
   const weatherObj = {
     location,
     forecast: [nextSevenDays, nextFiveHours],
+    fahrenheit: false,
   };
   console.log(weatherObj);
 }
