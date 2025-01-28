@@ -26,10 +26,25 @@ async function newForecast(location) {
   );
   const responseJSON = await response.json();
   const nextSevenDays = responseJSON.days.map((day) => convertResponse(day));
-  console.log(nextSevenDays);
+  const weatherObj = {
+    location,
+    forecast: nextSevenDays,
+  };
+  console.log(weatherObj);
 }
 
 newForecast("London,UK");
+
+const locationInput = document.querySelector("#locationInput");
+const locationBtn = document.querySelector("#locationSubmit");
+locationBtn.addEventListener("click", () => {
+  const newLocation = locationInput.value;
+  if (!newLocation) {
+    newForecast("London,UK");
+  } else {
+    newForecast(newLocation);
+  }
+});
 
 // DATA I NEED
 
