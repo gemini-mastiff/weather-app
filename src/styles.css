@@ -1,21 +1,273 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-    box-sizing: border-box;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  /* border: 1px solid red; */
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Roboto Flex";
+  src: url(font/RobotoFlex-VariableFont_GRAD\,XOPQ\,XTRA\,YOPQ\,YTAS\,YTDE\,YTFI\,YTLC\,YTUC\,opsz\,slnt\,wdth\,wght.ttf);
+}
+
+:root {
+  --MAIN-COLOUR: #fafaf9;
+  --BG-COLOUR: #e5e7eb;
+  --TEXT-LIGHT: #a3a3a3;
+  --ACCENT-1: #0ea5e9;
+  --ACCENT-2: #facc15;
+  font-family: "Roboto Flex", sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+body {
+  background-color: var(--BG-COLOUR);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin: auto;
+}
+
+.smallWeatherIcon {
+  width: 50px;
+  height: 50px;
+}
+
+.forecast-window {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3rem;
+}
+
+/* TEMP BUTTONS */
+
+.temp-button-wrapper {
+  display: flex;
+  align-self: flex-end;
+  margin-right: 3rem;
+}
+
+/* FORECAST CARD */
+
+.forecast-card {
+  background-color: black;
+  height: 500px;
+  width: 700px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 2fr 1fr;
+  gap: 0.2rem;
+  border: 3px solid black;
+  border-radius: 2rem;
+  overflow: hidden;
+}
+
+/* CURRENT HOUR */
+
+.current-hour-wrapper {
+  background-color: darkgray;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.current-hour-header {
+  grid-column: 1/3;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+}
+
+.current-hour-header > h1 {
+  color: var(--MAIN-COLOUR);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.current-hour-forecast {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.weatherIcon {
+  width: 200px;
+  height: 200px;
+}
+
+.current-hour-stats {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.current-hour-stats > div {
+  background-color: grey;
+  width: 7rem;
+  height: 7rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.current-hour-stats h3 {
+  color: var(--MAIN-COLOUR);
+  font-size: 2.8rem;
+  font-weight: bold;
+}
+
+/* NEXT HOURS */
+
+.next-hours-wrapper {
+  background-color: grey;
+}
+
+.next-hours-bg {
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.next-hour-card {
+  flex: 1;
+  background-color: grey;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.next-hour-card > p {
+  color: var(--MAIN-COLOUR);
+  font-weight: bold;
+}
+
+.next-hour-card > img {
+  filter: invert(83%) sepia(63%) saturate(2%) hue-rotate(20deg) brightness(105%)
+    contrast(98%);
+}
+
+/* WEEK WRAPPER */
+
+.week-wrapper {
+  grid-column: 1 / 3;
+  background-color: beige;
+}
+
+.day-card-bg {
+  background-color: black;
+  display: flex;
+  gap: 0.2rem;
+}
+
+.day-card {
+  flex: 1;
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.5rem;
+}
+
+/* LOCATION FORM */
+
+#locationForm {
+  display: flex;
+  justify-content: center;
 }
