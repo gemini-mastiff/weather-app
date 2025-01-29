@@ -34,11 +34,9 @@ function convertHourResponse(days) {
 
 async function fetchForecast(location) {
   const response = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=uk&key=LESUX8VAH9B76EXZ8PQA8WYE3&IconSet`,
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=uk&key=LESUX8VAH9B76EXZ8PQA8WYE3&iconSet`,
   );
   const responseJSON = await response.json();
-
-  console.log(responseJSON);
 
   const nextSevenDays = responseJSON.days.map((day) =>
     convertWeekResponse(day),
