@@ -105,7 +105,11 @@ video {
 }
 
 body {
-  background-color: var(--BG-COLOUR);
+  background-size: cover;
+}
+
+.gif-blackout {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .content {
