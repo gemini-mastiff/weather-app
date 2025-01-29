@@ -34,8 +34,8 @@ function generateCurrentHourWrapper(currentHour, currentLocation) {
   const currentTemp = generateElement("div", "current-temp");
   const currentPrecip = generateElement("div", "current-precip");
 
-  currentTemp.textContent = `${currentHour.hourTemp}°C`;
-  currentPrecip.textContent = `${currentHour.hourPrecip}%`;
+  currentTemp.textContent = currentHour.hourTemp;
+  currentPrecip.textContent = currentHour.hourPrecip;
 
   currentHourStats.append(currentTemp, currentPrecip);
 
@@ -61,8 +61,8 @@ function generateNextHoursWrapper(hourArray) {
     const time = generateElement("p");
 
     icon.src = generateSVG(hour.hourIcon);
-    temp.textContent = `${hour.hourTemp}°C`;
-    precip.textContent = `${hour.hourPrecip}%`;
+    temp.textContent = hour.hourTemp;
+    precip.textContent = hour.hourPrecip;
     if (hour === hourArray[0]) {
       time.textContent = "NOW";
     } else {
@@ -95,8 +95,8 @@ function generateWeekWrapper(weekArray) {
       date.textContent = formatDay(day.date);
     }
     icon.src = generateSVG(day.dayIcon);
-    maxTemp.textContent = `${day.dayTempMax}°C`;
-    minTemp.textContent = `${day.dayTempMin}°C`;
+    maxTemp.textContent = day.dayTempMax;
+    minTemp.textContent = day.dayTempMin;
 
     dayCard.append(date, icon, maxTemp, minTemp);
     dayCardBg.append(dayCard);

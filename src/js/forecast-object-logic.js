@@ -1,5 +1,10 @@
 import { generateForecastCard } from "./DOM-generation";
 
+function convertTempUnit(temp) {
+  const measurement = forecastObj.fahrenheit ? "°F" : "°C";
+  return temp + measurement;
+}
+
 function getCurrentHour() {
   const today = new Date();
   return today.getHours();
@@ -8,14 +13,14 @@ function getCurrentHour() {
 function convertWeekResponse(day) {
   const date = day.datetime;
   const dayIcon = day.icon;
-  const dayTempMax = day.tempmax;
-  const dayTempMin = day.tempmin;
+  const dayTempMax = convertTempUnit(day.tempmax);
+  const dayTempMin = convertTempUnit(day.tempmin);
 
   const dayHours = day.hours.map((h) => {
     const hour = h.datetime;
     const hourIcon = h.icon;
-    const hourTemp = h.temp;
-    const hourPrecip = h.precip;
+    const hourTemp = convertTempUnit(h.temp);
+    const hourPrecip = `${h.precip}%`;
 
     return { hour, hourIcon, hourTemp, hourPrecip };
   });
