@@ -7,20 +7,20 @@ function getCurrentHour() {
 
 function convertWeekResponse(day) {
   const date = day.datetime;
-  const dayConditions = day.conditions;
+  const dayIcon = day.icon;
   const dayTempMax = day.tempmax;
   const dayTempMin = day.tempmin;
 
   const dayHours = day.hours.map((h) => {
     const hour = h.datetime;
-    const hourConditions = h.conditions;
+    const hourIcon = h.icon;
     const hourTemp = h.temp;
     const hourPrecip = h.precip;
 
-    return { hour, hourConditions, hourTemp, hourPrecip };
+    return { hour, hourIcon, hourTemp, hourPrecip };
   });
 
-  return { date, dayConditions, dayTempMax, dayTempMin, dayHours };
+  return { date, dayIcon, dayTempMax, dayTempMin, dayHours };
 }
 
 function convertHourResponse(days) {
@@ -34,9 +34,12 @@ function convertHourResponse(days) {
 
 async function fetchForecast(location) {
   const response = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=uk&key=LESUX8VAH9B76EXZ8PQA8WYE3`,
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=uk&key=LESUX8VAH9B76EXZ8PQA8WYE3&IconSet`,
   );
   const responseJSON = await response.json();
+
+  console.log(responseJSON);
+
   const nextSevenDays = responseJSON.days.map((day) =>
     convertWeekResponse(day),
   );
