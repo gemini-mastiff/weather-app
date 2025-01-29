@@ -1,9 +1,8 @@
 import { forecastObj } from "./js/forecast-object-logic";
+import { clearForecastCard } from "./js/DOM-generation";
 import "./styles.css";
 
 console.log("Hello World!");
-
-forecastObj.newForecast("London,UK");
 
 const locationInput = document.querySelector("#locationInput");
 const locationBtn = document.querySelector("#locationSubmit");
@@ -16,4 +15,9 @@ locationBtn.addEventListener("click", (event) => {
     forecastObj.newForecast(newLocation);
   }
   locationInput.textContent = "";
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  clearForecastCard();
+  forecastObj.newForecast("London,UK");
 });
