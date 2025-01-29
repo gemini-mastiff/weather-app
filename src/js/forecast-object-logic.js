@@ -56,7 +56,7 @@ const forecastObj = {
   location: undefined,
   forecast: undefined,
   fahrenheit: false,
-  async newForecast(newLocation) {
+  async newForecast(newLocation = this.location) {
     this.location = newLocation;
     this.forecast = await fetchForecast(newLocation, this.fahrenheit);
     generateForecastCard(forecastObj);

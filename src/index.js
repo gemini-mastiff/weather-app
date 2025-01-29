@@ -10,7 +10,7 @@ locationBtn.addEventListener("click", (event) => {
   event.preventDefault();
   const newLocation = locationInput.value;
   if (!newLocation) {
-    forecastObj.newForecast("London,UK");
+    forecastObj.newForecast();
   } else {
     forecastObj.newForecast(newLocation);
   }
@@ -23,7 +23,7 @@ unitBtn.addEventListener("click", () => {
   unitBtn.textContent = forecastObj.fahrenheit
     ? "Change to °C"
     : "Change to °F";
-  forecastObj.newForecast(forecastObj.location);
+  forecastObj.newForecast();
 });
 
 window.addEventListener("DOMContentLoaded", () => {
