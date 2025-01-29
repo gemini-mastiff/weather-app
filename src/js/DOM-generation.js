@@ -1,3 +1,5 @@
+import { generateSVG } from "./weather-processor";
+
 function generateElement(element, optionalClass = false) {
   const newElement = document.createElement(element);
   if (optionalClass) {
@@ -50,8 +52,7 @@ function generateCurrentHourWrapper(currentHour, currentLocation) {
 
   const currentHourForecast = generateElement("div", "current-hour-forecast");
   const currentHourIcon = generateElement("img", "weather-icon");
-  // Will hook up images later
-  // currentHourIcon.src = ""
+  currentHourIcon.src = generateSVG(currentHour.hourIcon);
   currentHourForecast.append(currentHourIcon);
 
   const currentHourStats = generateElement("div", "current-hour-stats");
@@ -86,7 +87,7 @@ function generateNextHoursWrapper(hourArray) {
     const precip = generateElement("p");
     const time = generateElement("p");
 
-    icon.src = "";
+    icon.src = generateSVG(hour.hourIcon);
     temp.textContent = `${hour.hourTemp}°C`;
     precip.textContent = `${hour.hourPrecip}%`;
     if (hour === hourArray[0]) {
@@ -120,7 +121,7 @@ function generateWeekWrapper(weekArray) {
     } else {
       date.textContent = formatDay(day.date);
     }
-    icon.src = "";
+    icon.src = generateSVG(day.dayIcon);
     maxTemp.textContent = `${day.dayTempMax}°C`;
     minTemp.textContent = `${day.dayTempMin}°C`;
 
