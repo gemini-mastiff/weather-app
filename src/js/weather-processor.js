@@ -10,7 +10,7 @@ import moonSvg from "../svg/weather-night.svg";
 
 function generateSVG(weatherCondition) {
   let src;
-  switch (expr) {
+  switch (weatherCondition) {
     case "snow":
       src = snowSvg;
       break;
