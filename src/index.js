@@ -19,7 +19,10 @@ locationBtn.addEventListener("click", (event) => {
 
 const unitBtn = document.querySelector("#unitBtn");
 unitBtn.addEventListener("click", () => {
-  forecastObj.fahrenheit = forecastObj.fahrenheit === false ? true : false;
+  forecastObj.fahrenheit = forecastObj.fahrenheit ? false : true;
+  unitBtn.textContent = forecastObj.fahrenheit
+    ? "Change to °C"
+    : "Change to °F";
   forecastObj.newForecast(forecastObj.location);
 });
 
