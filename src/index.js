@@ -1,5 +1,5 @@
 import { forecastObj } from "./js/forecast-object-logic";
-import { clearForecastCard } from "./js/DOM-generation";
+import { generateForecastCard } from "./js/DOM-generation";
 import "./styles.css";
 
 console.log("Hello World!");
@@ -18,6 +18,6 @@ locationBtn.addEventListener("click", (event) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  clearForecastCard();
+  generateForecastCard();
   forecastObj.newForecast("London,UK");
 });
