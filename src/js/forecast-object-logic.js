@@ -1,3 +1,5 @@
+import { generateForecastCard } from "./DOM-generation";
+
 function getCurrentHour() {
   const today = new Date();
   return today.getHours();
@@ -50,7 +52,7 @@ const forecastObj = {
   async newForecast(newLocation) {
     this.location = newLocation;
     this.forecast = await fetchForecast(newLocation);
-    console.log(forecastObj);
+    generateForecastCard(forecastObj);
   },
 };
 

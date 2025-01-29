@@ -18,6 +18,6 @@ locationBtn.addEventListener("click", (event) => {
 });
 
 window.addEventListener("DOMContentLoaded", () => {
-  generateForecastCard();
   forecastObj.newForecast("London,UK");
+  console.log(forecastObj);
 });
