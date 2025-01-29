@@ -9,16 +9,17 @@
   <body>
     <div class="content">
       <div class="forecast-window">
-        <div class="temp-button-wrapper">
-          <div class="temp-btn" id="celsiusBtn">C°</div>
-          <div class="temp-btn" id="fahrenheitBtn">F°</div>
+        <div class="options-row">
+          <form id="locationForm">
+            <input id="locationInput" type="text" placeholder="Location" />
+            <button id="locationSubmit">Submit</button>
+          </form>
+          <div class="temp-button-wrapper">
+            <div class="temp-btn" id="unitBtn">Change to F°</div>
+          </div>
         </div>
         <div class="forecast-card"></div>
       </div>
-      <form id="locationForm">
-        <input id="locationInput" type="text" placeholder="Location" />
-        <button id="locationSubmit">Submit</button>
-      </form>
     </div>
   </body>
 </html>

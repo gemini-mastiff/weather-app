@@ -58,12 +58,10 @@ function generateCurrentHourWrapper(currentHour, currentLocation) {
   const currentHourStats = generateElement("div", "current-hour-stats");
   const currentTemp = generateElement("div", "current-temp");
   const currentPrecip = generateElement("div", "current-precip");
-  const currentTempHeader = generateElement("h3");
-  const currentPrecipHeader = generateElement("h3");
-  currentTempHeader.textContent = `${currentHour.hourTemp}°C`;
-  currentPrecipHeader.textContent = `${currentHour.hourPrecip}%`;
-  currentTemp.append(currentTempHeader);
-  currentPrecip.append(currentPrecipHeader);
+
+  currentTemp.textContent = `${currentHour.hourTemp}°C`;
+  currentPrecip.textContent = `${currentHour.hourPrecip}%`;
+
   currentHourStats.append(currentTemp, currentPrecip);
 
   currentHourWrapper.append(
@@ -96,7 +94,7 @@ function generateNextHoursWrapper(hourArray) {
       time.textContent = formatTime(hour.hour);
     }
 
-    nextHourCard.append(icon, temp, precip, time);
+    nextHourCard.append(time, icon, temp, precip);
     nextHoursBg.append(nextHourCard);
   }
 
@@ -111,10 +109,10 @@ function generateWeekWrapper(weekArray) {
   for (const day of weekArray) {
     const dayCard = generateElement("div", "day-card");
 
-    const date = generateElement("p");
+    const date = generateElement("p", "weekday");
     const icon = generateElement("img", "small-weather-icon");
-    const maxTemp = generateElement("p");
-    const minTemp = generateElement("p");
+    const maxTemp = generateElement("p", "max-temp");
+    const minTemp = generateElement("p", "min-temp");
 
     if (isDateToday(day.date)) {
       date.textContent = "Today";
