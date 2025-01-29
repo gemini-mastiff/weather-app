@@ -1,7 +1,8 @@
-import { generateSVG } from "./weather-processor";
+import { generateSVG, generateBackgroundGif } from "./weather-processor";
 import { formatDay, formatTime, isDateToday } from "./time-and-date-funcs";
 
 const forecastCard = document.querySelector(".forecast-card");
+const body = document.querySelector("body");
 
 function generateElement(element, optionalClass = false) {
   const newElement = document.createElement(element);
@@ -106,14 +107,12 @@ function generateWeekWrapper(weekArray) {
   return weekWrapper;
 }
 
-function generateForecastCard(forecastObj) {
-  const currentLocation = forecastObj.location;
-  const fahrenheit = forecastObj.fahrenheit;
-  const [weekArray, hourArray] = forecastObj.forecast;
-  const currentHourObject = hourArray[0];
-
-  clearForecastCard();
-
+function generateForecastCard(
+  currentLocation,
+  weekArray,
+  hourArray,
+  currentHourObject,
+) {
   const currentHourWrapper = generateCurrentHourWrapper(
     currentHourObject,
     currentLocation,
@@ -124,4 +123,20 @@ function generateForecastCard(forecastObj) {
   forecastCard.append(currentHourWrapper, nextHoursWrapper, weekWrapper);
 }
 
-export { generateForecastCard };
+function generateNewPage(forecastObj) {
+  const currentLocation = forecastObj.location;
+  const [weekArray, hourArray] = forecastObj.forecast;
+  const currentHourObject = hourArray[0];
+
+  clearForecastCard();
+  generateForecastCard(
+    currentLocation,
+    weekArray,
+    hourArray,
+    currentHourObject,
+  );
+
+  generateBackgroundGif(currentHourObject.hourIcon, body);
+}
+
+export { generateNewPage };

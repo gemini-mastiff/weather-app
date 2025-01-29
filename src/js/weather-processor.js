@@ -42,4 +42,21 @@ function generateSVG(weatherCondition) {
   return src;
 }
 
-export { generateSVG };
+async function generateBackgroundGif(weatherCondition, body) {
+  console.log(weatherCondition);
+  try {
+    const response = await fetch(
+      `https://api.giphy.com/v1/gifs/translate?api_key=saENL2u8wM3re2c30sNqJO3ouYVPtYUy&s=${weatherCondition}`,
+      { mode: "cors" },
+    );
+    const gifData = await response.json();
+    const gifUrl = gifData.data.images.original.url;
+    body.style.backgroundImage = `url(${gifUrl})`;
+  } catch (error) {
+    console.log(error);
+    const gifUrl = `https://media.giphy.com/media/41SIOpeqCfIru/giphy.gif?cid=790b7611d21kysfi5cl35ejq2fm564v6sldk2kfprph342y0&ep=v1_gifs_search&rid=giphy.gif&ct=g`;
+    body.style.backgroundImage = `url(${gifUrl})`;
+  }
+}
+
+export { generateSVG, generateBackgroundGif };

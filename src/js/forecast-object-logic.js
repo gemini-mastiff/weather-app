@@ -1,4 +1,4 @@
-import { generateForecastCard } from "./DOM-generation";
+import { generateNewPage } from "./DOM-generation";
 
 function convertTempUnit(temp) {
   const measurement = forecastObj.fahrenheit ? "°F" : "°C";
@@ -59,7 +59,7 @@ const forecastObj = {
   async newForecast(newLocation = this.location) {
     this.location = newLocation;
     this.forecast = await fetchForecast(newLocation, this.fahrenheit);
-    generateForecastCard(forecastObj);
+    generateNewPage(forecastObj);
   },
 };
 
