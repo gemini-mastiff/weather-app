@@ -17,6 +17,12 @@ locationBtn.addEventListener("click", (event) => {
   locationInput.textContent = "";
 });
 
+const unitBtn = document.querySelector("#unitBtn");
+unitBtn.addEventListener("click", () => {
+  forecastObj.fahrenheit = forecastObj.fahrenheit === false ? true : false;
+  forecastObj.newForecast(forecastObj.location);
+});
+
 window.addEventListener("DOMContentLoaded", () => {
   forecastObj.newForecast("London");
   console.log(forecastObj);
