@@ -15,4 +15,5 @@ locationBtn.addEventListener("click", (event) => {
   } else {
     forecastObj.newForecast(newLocation);
   }
+  locationInput.textContent = "";
 });
