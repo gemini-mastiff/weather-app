@@ -32,9 +32,10 @@ function convertHourResponse(days) {
   return todayAndTomorrowHours.slice(currentHourIndex, currentHourIndex + 5);
 }
 
-async function fetchForecast(location) {
+async function fetchForecast(location, fahrenheit) {
+  const unit = fahrenheit ? "us" : "uk";
   const response = await fetch(
-    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=uk&key=LESUX8VAH9B76EXZ8PQA8WYE3&iconSet`,
+    `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=${unit}&key=LESUX8VAH9B76EXZ8PQA8WYE3&iconSet`,
   );
   const responseJSON = await response.json();
 
@@ -52,7 +53,7 @@ const forecastObj = {
   fahrenheit: false,
   async newForecast(newLocation) {
     this.location = newLocation;
-    this.forecast = await fetchForecast(newLocation);
+    this.forecast = await fetchForecast(newLocation, this.fahrenheit);
     generateForecastCard(forecastObj);
   },
 };
