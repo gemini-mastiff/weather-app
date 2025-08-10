@@ -1,5 +1,14 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const webpack = require("webpack");
+const dotenv = require("dotenv");
+
+const env = dotenv.config().parsed || {};
+
+const envKeys = Object.keys(env).reduce((prev, next) => {
+  prev[`process.env.${next}`] = JSON.stringify(env[next]);
+  return prev;
+}, {});
 
 module.exports = {
   entry: "./src/index.js",
@@ -12,6 +21,8 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/template.html",
     }),
+
+    new webpack.DefinePlugin(envKeys),
   ],
   module: {
     rules: [
@@ -31,7 +42,6 @@ module.exports = {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: "asset/resource",
       },
-      ,
     ],
   },
 };

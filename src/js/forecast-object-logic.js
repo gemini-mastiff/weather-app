@@ -41,7 +41,7 @@ async function fetchForecast(location, fahrenheit) {
   const unit = fahrenheit ? "us" : "uk";
   try {
     const response = await fetch(
-      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=${unit}&key=LESUX8VAH9B76EXZ8PQA8WYE3&iconSet`,
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next6days?unitGroup=${unit}&key=${process.env.VC_KEY}&iconSet`,
     );
     const responseJSON = await response.json();
 
